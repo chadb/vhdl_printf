@@ -1,0 +1,86 @@
+----  $Id: CHANGES,v 1.10 2002/07/15 14:28:34 jand Exp $
+----
+----  PCK_FIO: a VHDL package for C-style formatted file output
+----  Copyright (C) 1995, 2001 Easics NV 
+----
+----  This library is free software; you can redistribute it and/or
+----  modify it under the terms of the GNU Lesser General Public
+----  License as published by the Free Software Foundation; either
+----  version 2.1 of the License, or (at your option) any later version.
+----
+----  This library is distributed in the hope that it will be useful,
+----  but WITHOUT ANY WARRANTY; without even the implied warranty of
+----  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+----  Lesser General Public License for more details.
+----
+----  You should have received a copy of the GNU Lesser General Public
+----  License along with this library; if not, write to the Free Software
+----  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+---- 
+----  For suggestions, bug reports, enhancement requests, and info about  
+----  our design services, you can contact us at the following address: 
+----     http://www.easics.com
+----     Easics NV, Interleuvenlaan 86, B-3001 Leuven, Belgium
+----     tel.: +32 16 395 600   fax : +32 16 395 619 
+----     e-mail: jand@easics.be (Jan Decaluwe)
+----
+
+
+Changes from version 1.16 to version 2002.07
+============================================
+
+PCK_FIO is now distributed under the GNU Lesser General Public Licencse
+instead of the ordinary GPL, to better reflect intended usage.
+
+Cosmetic changes in source code to correct some typos in the testbench output.
+A new testbench is also supplied.
+
+The package now uses IEEE.numeric_std as default.
+
+URL http://www.easics.com has been made part of address.
+
+Changed syntax in the PCK_FIO package and its testbench to support VHDL-1993.
+Because of backwards-incompatibility, it has been necessary to supply
+different sets of files for 1987 and 1993.
+
+Split the packages into a separate file for the header and a
+separate file for the body (in compliance with Easics' guidelines).
+
+These changes resulted in the files:
+
+Files for VHDL-1993: 
+--------------------
+  PCK_FIO_1993.vhd : 	 the source code of the header file for the package
+  PCK_FIO_1993_BODY.vhd: the source code of the body of the package
+  TB_PCK_FIO_1993.vhd:   the testbench for the package 
+
+Files for VHDL-1987:
+--------------------
+  PCK_FIO_1987.vhd:      the source code of the header file for the package
+  PCK_FIO_1987_BODY.vhd: the source code of the body of the package
+  TB_PCK_FIO_1987.vhd:   the testbench for the package 
+
+Updated README and PCK_FIO.html to support these changes.
+
+Adapted package files to support NUL termination of strings.
+fo(Arg: string) now prints the string until the first NUL.
+Several examples of its use are demonstrated in the supplied testbenches.
+
+Made cosmetic changes to code to improve readability.
+
+Acknowledgment
+--------------
+These changes have been implemented by Peter Geens.
+
+
+
+
+
+
+
+
+
+
+
+
+
