@@ -1,0 +1,5 @@
+*.swp
+*.o
+easics_packages
+PCK_FIO.out
+tbe_pck_fio

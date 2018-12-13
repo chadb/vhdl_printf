@@ -4,6 +4,26 @@ This vhdl package implements printf for vhdl.  It allows you to do formatted pri
 
 ## Installation
 
+To install PCK_FIO, define a VHDL library called EASICS_PACKAGES, and
+analyze the VHDL file PCK_FIO_1993.vhd and PCK_FIO_1993_BODY.vhd into this library.
+
+### Modelsim
+
+1. vlib easics_packages
+1. vcom -work easics_packages PCK_FIO_1993.vhd PCK_FIO_1993_BODY.vhd TB_PCK_FIO_1993.vhd
+1. vsim -do "run -all" TBE_PCK_FIO 
+1. diff PCK_FIO.out.gold PCK_FIO.out
+
+### ghdl
+
+1. mkdir easics_packages
+1. ghdl -a --std=93 -Peasics_packages --work=easics_packages --workdir=easics_packages PCK_FIO_1993.vhd PCK_FIO_1993_BODY.vhd TB_PCK_FIO_1993.vhd
+1. ghdl -e -Peasics_packages --work=easics_packages --workdir=easics_packages TBE_PCK_FIO
+1. ./tbe_pck_fio 
+1. diff PCK_FIO.out.gold PCK_FIO.out
+
+To install the test bench, analyze TB_PCK_FIO_1993.vhd into the same library.
+
 ## Usage
 
 
