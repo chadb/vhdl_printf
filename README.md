@@ -1,3 +1,21 @@
+# vhdl_printf
+
+This vhdl package implements printf for vhdl.  It allows you to do formatted printing to a LINE type.
+
+## Installation
+
+## Usage
+
+
+
+## History
+
+This was an open source package developed by easics.com in 2001.  The only think I have done is created a repo on github and uploaded it.  I did reformat this README file and added a license file.  Below is the original readme file:
+
+
+
+
+```
 ----  $Id: README,v 1.11 2002/07/15 13:09:34 jand Exp $
 ----
 ----  PCK_FIO: a VHDL package for C-style formatted file output
@@ -86,3 +104,4 @@ issue or a simulator non-compliance or bug.
 
 
 
+```
