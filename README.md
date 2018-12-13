@@ -24,6 +24,83 @@ analyze the VHDL file PCK_FIO_1993.vhd and PCK_FIO_1993_BODY.vhd into this libra
 
 ## [Usage](https://cdn.jsdelivr.net/gh/chadb/vhdl_printf@blob/master/PCK_FIO.html)
 
+PCK_FIO is a VHDL package that defines  fprint, a function for formatted file output.
+
+After installing the package you can call fprint as follows:
+
+```vhdl
+  fprint(F, L, Format, fo(Expr_1), fo(Expr_2), ... fo(Expr_n));
+```
+
+where F is the filehandle and L is the line variable.
+
+The argument Format is the format string, which consists of ``normal'' substrings which are copied verbatim, and format specifiers, starting with '%'. A typical format string looks as follows:
+
+```vhdl
+   "Arg1 = %6r, Arg2 = %10d, Arg3 = %-5r\n"
+```
+
+The remaining arguments are the expressions whose results you want to write to the file, embedded in fo function calls. There can be 0 to 32 of such arguments. The expressions can be of any type for which an fo function exists. String expressions can also be called directly.
+
+The file output function 'fo'
+
+The fo (file output) functions do the trick. They return a tagged string representation that is meaningful to format specifiers. Here are some examples:
+
+```vhdl
+  fo (signed'("1100"))   returns "S:1100" 
+  fo (unsigned'("1100")) returns "U:1100" 
+  fo (TRUE)              returns "L:T"
+  fo (127)               returns "I:127"
+```
+
+The internal behavior of fo is irrelevant to the typical user. 
+ 
+The fo function is currently overloaded as follows:
+
+```vhdl
+  function fo (Arg: unsigned)          return string;
+  function fo (Arg: signed)            return string;
+  function fo (Arg: std_logic_vector)  return string;
+  function fo (Arg: std_ulogic_vector) return string;
+  function fo (Arg: bit_vector)        return string;
+  function fo (Arg: integer)           return string;
+  function fo (Arg: std_ulogic)        return string;
+  function fo (Arg: bit)               return string;
+  function fo (Arg: boolean)           return string; 
+  function fo (Arg: character)         return string;
+  function fo (Arg: string)            return string;
+  function fo (Arg: time)              return string;
+```
+
+To support null-terminated strings, the function fo(Arg: string) processes Arg up to the first NUL character, if any. If you want the whole string to be outputted you can just enter the string as a direct argument in fprint.  See also the examples in the testbench.
+
+###Format specifiers
+
+The general format of a format specifier is:
+
+```
+   %[-][n]c
+```
+
+The optional - sign specifies left justified output; default is right justified.
+The optional number n specifies a field-width. If it is not specified, fprint does something reasonable.
+
+| c | is the conversion specifier. Currently the following conversion specifiers are supported |
+| r | reasonable output format (inspired by Synopsys VSS) Prints the ``most reasonable'' representation e.g. hex for unsigned, signed and other bit-like vectors (not preferred for integers) |
+| b | bit-oriented output |
+| d | decimal output |
+| s | string output (e.g. in combination with 'IMAGE for enum types) |
+| q | ``qualified'' string output (shows internal representation from fo) |
+| {} | Iteration operator, used as follows: %n{<format-string>} In this case, n is the iteration count and is mandatory. Iteration can be nested. |
+
+Special characters
+
+To print a double quote,  use '""' in the format string (VHDL convention). To print the special characters, '\', and '%', escape them with '\'. To prevent '{' and '}' from being interpreted as opening and closing brackets in iteration strings, escape them with '\'.
+
+A newline is specified in the format string by '\n'.
+
+
+
 ## History
 
 This was an open source package developed by easics.com in 2001.  The only think I have done is created a repo on github and uploaded it.  I did reformat this README file and added a license file.  Below is the original readme file:
