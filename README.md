@@ -22,11 +22,7 @@ analyze the VHDL file PCK_FIO_1993.vhd and PCK_FIO_1993_BODY.vhd into this libra
 1. ./tbe_pck_fio 
 1. diff PCK_FIO.out.gold PCK_FIO.out
 
-To install the test bench, analyze TB_PCK_FIO_1993.vhd into the same library.
-
-## Usage
-
-
+## [Usage](https://cdn.jsdelivr.net/gh/chadb/vhdl_printf@blob/master/PCK_FIO.html)
 
 ## History
 
