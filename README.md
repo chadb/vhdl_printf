@@ -86,6 +86,7 @@ The optional - sign specifies left justified output; default is right justified.
 The optional number n specifies a field-width. If it is not specified, fprint does something reasonable.
 
 | c | is the conversion specifier. Currently the following conversion specifiers are supported |
+|---|-----|
 | r | reasonable output format (inspired by Synopsys VSS) Prints the ``most reasonable'' representation e.g. hex for unsigned, signed and other bit-like vectors (not preferred for integers) |
 | b | bit-oriented output |
 | d | decimal output |
